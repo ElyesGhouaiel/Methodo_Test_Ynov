@@ -41,6 +41,30 @@ class TestFonctions(unittest.TestCase):
 
     def test_convertir_temperature_eau_bouillante(self):
         self.assertEqual(convertir_temperature(100), 212)
+    
+    def test_additionner_type_error(self):
+        with self.assertRaises(TypeError):
+            additionner("a", 5)
+
+    def test_est_pair_type_error(self):
+        with self.assertRaises(TypeError):
+            est_pair(3.5)  # pas un int
+
+    def test_valider_email_type_error(self):
+        with self.assertRaises(TypeError):
+            valider_email(12345)
+
+    def test_calculer_moyenne_type_error(self):
+        with self.assertRaises(TypeError):
+            calculer_moyenne("pas une liste")
+
+    def test_calculer_moyenne_valeur_invalide(self):
+        with self.assertRaises(ValueError):
+            calculer_moyenne([10, "quinze", 20])
+
+    def test_convertir_temperature_type_error(self):
+        with self.assertRaises(TypeError):
+            convertir_temperature("trente")
 
 if __name__ == '__main__':
     unittest.main()
