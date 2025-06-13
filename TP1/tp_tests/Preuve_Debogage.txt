@@ -1,0 +1,38 @@
+// J'ai fait intentionnellement une erreur !
+
+elyes@DESKTOP-BT4NUI3 MINGW64 ~/Desktop/Ynov/Methodo_Test_Ynov/TP1/tp_tests (main)
+$ py test_fonctions.py
+FF...........
+======================================================================
+FAIL: test_additionner_cas_negatif (__main__.TestFonctions.test_additionner_cas_negatif)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\elyes\Desktop\Ynov\Methodo_Test_Ynov\TP1\tp_tests\test_fonctions.py", line 10, in test_additionner_cas_negatif
+    self.assertEqual(additionner(-2, -3), -5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 6 != -5
+
+======================================================================
+FAIL: test_additionner_cas_positif (__main__.TestFonctions.test_additionner_cas_positif)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\elyes\Desktop\Ynov\Methodo_Test_Ynov\TP1\tp_tests\test_fonctions.py", line 7, in test_additionner_cas_positif
+    self.assertEqual(additionner(2, 3), 5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 6 != 5
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.001s
+
+FAILED (failures=2)
+
+elyes@DESKTOP-BT4NUI3 MINGW64 ~/Desktop/Ynov/Methodo_Test_Ynov/TP1/tp_tests (main)
+$ py test_fonctions.py
+.............
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+OK
+
+elyes@DESKTOP-BT4NUI3 MINGW64 ~/Desktop/Ynov/Methodo_Test_Ynov/TP1/tp_tests (main)
+$ 
