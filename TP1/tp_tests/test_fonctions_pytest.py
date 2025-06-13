@@ -1,3 +1,4 @@
+import pytest
 from fonctions import *
 
 def test_additionner_cas_positif():
@@ -38,3 +39,27 @@ def test_convertir_temperature_zero():
 
 def test_convertir_temperature_eau_bouillante():
     assert convertir_temperature(100) == 212
+
+def test_additionner_type_error():
+    with pytest.raises(TypeError):
+        additionner("a", 5)
+
+def test_est_pair_type_error():
+    with pytest.raises(TypeError):
+        est_pair("8")
+
+def test_valider_email_type_error():
+    with pytest.raises(TypeError):
+        valider_email(999)
+
+def test_calculer_moyenne_type_error():
+    with pytest.raises(TypeError):
+        calculer_moyenne("pas une liste")
+
+def test_calculer_moyenne_valeur_invalide():
+    with pytest.raises(ValueError):
+        calculer_moyenne([12, "erreur", 18])
+
+def test_convertir_temperature_type_error():
+    with pytest.raises(TypeError):
+        convertir_temperature(None)
