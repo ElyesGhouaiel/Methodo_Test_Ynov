@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: supermarket-receipt
+Version: 0.0.1
+Summary: Supermarket Receipt Kata
+Requires-Python: >=3.7
