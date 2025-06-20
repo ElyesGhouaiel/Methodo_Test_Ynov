@@ -113,6 +113,35 @@ class TestWeather(unittest.TestCase):
             }
         )
 
+    @patch('weather_service.requests.get')
+    def test_multiple_cities(self, mock_get):
+        """Test plusieurs villes avec une seule méthode"""
+
+        cities_and_temps = [
+            ("Paris", 25.0),
+            ("Londres", 18.5),
+            ("Tokyo", 30.2)
+        ]
+
+        for city, expected_temp in cities_and_temps:
+            with self.subTest(city=city):
+                fake_response = Mock()
+                fake_response.status_code = 200
+                fake_response.json.return_value = {'main': {'temp': expected_temp}}
+                mock_get.return_value = fake_response
+
+                result = get_temperature(city)
+                self.assertEqual(result, expected_temp)
+
+                mock_get.assert_called_with(
+                    'http://api.openweathermap.org/data/2.5/weather',
+                    params={
+                        'q': city,
+                        'appid': '441f54eb9b8819b3a05d1674294bb055',
+                        'units': 'metric'
+                    }
+                )
+
 class TestWeatherReport(unittest.TestCase):
 
     def setUp(self):
