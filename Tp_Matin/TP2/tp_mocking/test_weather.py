@@ -1,6 +1,7 @@
 import unittest
 import requests
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock,mock_open, patch
+from weather_service import save_weather_report
 from weather_service import get_temperature
 
 class TestWeather(unittest.TestCase):
@@ -111,6 +112,26 @@ class TestWeather(unittest.TestCase):
                 'units': 'metric'
             }
         )
+
+class TestWeatherReport(unittest.TestCase):
+
+    def setUp(self):
+        self.test_city = "Paris"
+        self.fixed_datetime = "2024-01-01T12:00:00"
+
+    @patch('weather_service.datetime')
+    @patch('builtins.open', new_callable=mock_open, read_data='[]')
+    @patch('weather_service.get_temperature')
+    def test_save_weather_report_success(self, mock_get_temp, mock_file, mock_datetime):
+        mock_get_temp.return_value = 20.5
+        mock_datetime.now.return_value.isoformat.return_value = self.fixed_datetime
+
+        result = save_weather_report(self.test_city)
+        self.assertTrue(result)
+        mock_get_temp.assert_called_once_with(self.test_city)
+        self.assertEqual(mock_file.call_count, 2)
+        mock_file.assert_any_call("weather_log.json", 'r')
+        mock_file.assert_any_call("weather_log.json", 'w')
 
 if __name__ == '__main__':
     unittest.main()

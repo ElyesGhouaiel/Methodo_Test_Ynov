@@ -1,4 +1,6 @@
 import requests
+import json
+from datetime import datetime
 
 def get_temperature(city):
     try:
@@ -13,3 +15,29 @@ def get_temperature(city):
             return None
     except requests.exceptions.RequestException:
         return None
+
+def save_weather_report(city, filename="weather_log.json"):
+    """Récupère la météo et la sauvegarde dans un fichier JSON"""
+
+    temp = get_temperature(city)
+    if temp is None:
+        return False
+
+    report = {
+        'city': city,
+        'temperature': temp,
+        'timestamp': datetime.now().isoformat()
+    }
+
+    try:
+        with open(filename, 'r') as f:
+            reports = json.load(f)
+    except FileNotFoundError:
+        reports = []
+
+    reports.append(report)
+
+    with open(filename, 'w') as f:
+        json.dump(reports, f)
+
+    return True
