@@ -80,7 +80,37 @@ class TestWeather(unittest.TestCase):
 
         # Vérifiez que l'appel a été tenté
         mock_get.assert_called_once()
-    
+
+    def setUp(self):
+        """Fixture : données communes à tous les tests"""
+        self.test_city = "Paris"
+        self.sample_weather_data = {
+            'main': {
+                'temp': 22.0
+            }
+        }
+
+    @patch('weather_service.requests.get')
+    def test_get_temperature_success_with_fixture(self, mock_get):
+        """Test avec données de la fixture"""
+
+        fake_response = Mock()
+        fake_response.status_code = 200
+        fake_response.json.return_value = self.sample_weather_data
+
+        mock_get.return_value = fake_response
+
+        result = get_temperature(self.test_city)
+
+        self.assertEqual(result, 22.0)
+        mock_get.assert_called_once_with(
+            'http://api.openweathermap.org/data/2.5/weather',
+            params={
+                'q': self.test_city,
+                'appid': '441f54eb9b8819b3a05d1674294bb055',
+                'units': 'metric'
+            }
+        )
 
 if __name__ == '__main__':
     unittest.main()
