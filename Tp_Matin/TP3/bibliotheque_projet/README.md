@@ -1,9 +1,3 @@
-Parfait Vous avez 95 % de couverture, tous les tests passent, le workflow CI fonctionne, vous avez respecté toutes les consignes jusqu'à la fin du TP : vous avez validé avec succès l’étape 17 🎉
-
-Passons maintenant à la dernière étape du TP.
-
----
-
 #  ÉTAPE 18 — Compléter le README final
 
 Voici le fichier complet `README.md` prêt à copier-coller dans votre projet `bibliotheque_projet`. Il inclut :
