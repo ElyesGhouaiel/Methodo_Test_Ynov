@@ -1,0 +1,26 @@
+Bonjour Jean Dupont,
+
+Nous avons le plaisir de confirmer votre inscription à l'événement suivant :
+
+=== DÉTAILS DE L'ÉVÉNEMENT ===
+Nom : Conférence Tech 2024
+Date : vendredi 15 mars 2024
+Lieu : Paris Convention Center
+Prix : 150€
+Description : Une conférence sur les dernières technologies
+
+=== VOS INFORMATIONS ===
+Nom : Dupont
+Prénom : Jean
+Email : jean.dupont@email.com
+Téléphone : 0123456789
+Date d'inscription : 15/01/2024
+
+=== CONFIRMATION ===
+Numéro de confirmation : CONF-00000001
+Statut : Confirmée
+
+Merci de conserver ce numéro de confirmation pour vos dossiers.
+
+Cordialement,
+L'équipe d'organisation
