@@ -32,7 +32,7 @@ class Task:
             raise TypeError("La priorité doit être une instance de Priority")
         
         # Initialisation des attributs
-        self.id = str(time.time())  # ID unique basé sur le timestamp
+        self.id = str(uuid.uuid4())  # ID unique garanti
         self.title = title.strip()
         self.description = description
         self.priority = priority

@@ -3,6 +3,7 @@ import csv
 import re
 from datetime import datetime
 from typing import List, Dict, Any, Optional
+from email.message import Message
 from .task import Task, Priority, Status
 
 
@@ -30,19 +31,27 @@ class EmailService:
             raise ValueError("Le titre de la tâche ne peut pas être vide")
         
         try:
-            # Simuler la connexion SMTP (dans un vrai cas, on utiliserait vraiment smtplib)
-            # Pour ce projet, on simule juste le comportement
-            
             # Créer le message
             subject = f"Rappel : {task_title}"
             due_text = f" (échéance : {due_date.strftime('%d/%m/%Y')})" if due_date else ""
             body = f"N'oubliez pas votre tâche : {task_title}{due_text}"
             
+            # Créer l'objet Message
+            msg = Message()
+            msg.set_payload(body)
+            msg["Subject"] = subject
+            msg["From"] = "noreply@taskmanager.com"
+            msg["To"] = email
+            
+            # Simuler la connexion SMTP
+            smtp = smtplib.SMTP(self.smtp_server, self.port)
+            smtp.send_message(msg)
+            smtp.quit()
+            
             # Log pour simulation
             print(f"[EMAIL] Envoi à {email} - Sujet: {subject}")
             print(f"[EMAIL] Corps: {body}")
             
-            # Simuler le succès
             return True
             
         except Exception as e:
@@ -63,6 +72,18 @@ class EmailService:
             # Simuler l'envoi
             subject = f"Tâche terminée : {task_title}"
             body = f"Félicitations ! Vous avez terminé la tâche : {task_title}"
+            
+            # Créer l'objet Message
+            msg = Message()
+            msg.set_payload(body)
+            msg["Subject"] = subject
+            msg["From"] = "noreply@taskmanager.com"
+            msg["To"] = email
+            
+            # Simuler la connexion SMTP
+            smtp = smtplib.SMTP(self.smtp_server, self.port)
+            smtp.send_message(msg)
+            smtp.quit()
             
             # Log pour simulation
             print(f"[EMAIL] Notification de completion à {email}")
@@ -89,6 +110,18 @@ Voici votre résumé quotidien :
 - Tâches en attente : {pending_tasks}
 
 Bonne journée !"""
+            
+            # Créer l'objet Message
+            msg = Message()
+            msg.set_payload(body)
+            msg["Subject"] = subject
+            msg["From"] = "noreply@taskmanager.com"
+            msg["To"] = email
+            
+            # Simuler la connexion SMTP
+            smtp = smtplib.SMTP(self.smtp_server, self.port)
+            smtp.send_message(msg)
+            smtp.quit()
             
             print(f"[EMAIL] Résumé quotidien envoyé à {email}")
             print(f"[EMAIL] {completed_tasks} terminées, {pending_tasks} en attente")
@@ -149,7 +182,8 @@ class ReportService:
         for task in tasks:
             priority_counts[task.priority.value] = priority_counts.get(task.priority.value, 0) + 1
         
-        return max(priority_counts, key=priority_counts.get) if priority_counts else "N/A"
+        # Utiliser une fonction lambda pour comparer les valeurs
+        return max(priority_counts.items(), key=lambda x: x[1])[0] if priority_counts else "N/A"
     
     def _calculate_avg_completion_time(self, completed_tasks: List[Task]) -> Optional[float]:
         """Calculer le temps moyen de completion en heures"""
