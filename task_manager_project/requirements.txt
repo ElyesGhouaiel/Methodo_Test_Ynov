@@ -1,0 +1,16 @@
+# Dépendances de production
+# (aucune pour ce projet - utilise seulement la stdlib Python)
+
+# Dépendances de développement et tests
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.0.0
+pytest-xdist>=3.0.0
+
+# Outils de qualité de code
+black>=22.0.0
+flake8>=5.0.0
+mypy>=1.0.0
+
+# Outils de documentation et rapports
+coverage>=7.0.0 
