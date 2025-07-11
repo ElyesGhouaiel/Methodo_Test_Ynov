@@ -1,6 +1,6 @@
 # TaskManager - Module de Gestion de Tâches
 
-## 📋 Description
+## - Description
 
 Module complet de gestion de tâches avec toutes les bonnes pratiques :
 - Tests unitaires et d'intégration
@@ -8,7 +8,7 @@ Module complet de gestion de tâches avec toutes les bonnes pratiques :
 - Organisation professionnelle du code
 - Couverture de code 95%+
 
-## 🏗️ Structure du projet
+## - Structure du projet
 
 ```
 task_manager_project/
@@ -24,13 +24,13 @@ task_manager_project/
 └── requirements.txt          # Dépendances
 ```
 
-## 🚀 Installation
+## - Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 💻 Utilisation rapide
+## - Utilisation rapide
 
 ```python
 from src.task_manager import TaskManager, Priority
@@ -57,9 +57,9 @@ stats = manager.get_statistics()
 print(f"Tâches terminées : {stats['completed_tasks']}")
 ```
 
-## 🧪 Tests
+## - Tests
 
-**⚠️ À FAIRE par le binôme :**
+**- À FAIRE par le binôme :**
 
 1. **Tests unitaires** (test_task.py, test_manager.py)
 2. **Tests d'intégration** (test_services.py) 
@@ -76,24 +76,24 @@ pytest
 pytest --cov=src/task_manager --cov-report=html
 ```
 
-## 📊 Fonctionnalités implémentées
+## - Fonctionnalités implémentées
 
-✅ **Entité Task complète**
+- **Entité Task complète**
 - Priorités (LOW, MEDIUM, HIGH, URGENT)
 - Statuts (TODO, IN_PROGRESS, DONE, CANCELLED)
 - Sérialisation JSON
 
-✅ **Gestionnaire TaskManager**
+- **Gestionnaire TaskManager**
 - CRUD complet des tâches
 - Filtrage par statut/priorité/projet
 - Sauvegarde/chargement JSON
 - Statistiques détaillées
 
-✅ **Services externes**
+- **Services externes**
 - EmailService (notifications mockables)
 - ReportService (rapports CSV/JSON)
 
-## 🎯 Prochaines étapes (pour le binôme)
+## - Prochaines étapes (pour le binôme)
 
 1. **Phase 3** : Implémenter TOUS les tests
 2. **Phase 4** : Configuration automatisation (pytest.ini, Makefile, CI/CD)
